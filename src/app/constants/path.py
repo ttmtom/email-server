@@ -1,0 +1,2 @@
+SERVER_SERVICES_PATH = '/server'
+MAIL_SERVICES_PATH = '/mail'

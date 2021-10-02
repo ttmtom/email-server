@@ -1,13 +1,20 @@
-from flask_restx import Namespace, Resource
-from app.api.model import Model
+from flask_restx import Namespace, Resource, namespace
+from app.api.server.model import Model
+from app.constants.path import SERVER_SERVICES_PATH
 
-app = Namespace('/server', description='server')
+app = Namespace(SERVER_SERVICES_PATH, description='server')
 apiModel = Model(app)
 
-@app.route('/ping')
+
+@app.route('/pingSystem', methods=['GET', 'POST'])
+@app.response(200, 'Success', apiModel.pingModel)
 class Server(Resource):
-    @app.response(200, 'Success', apiModel.pingModel)
     def get(self):
         return {
-            'msg': 'hello world'
+            'msg': 'get hello world!'
+        }
+
+    def post(self):
+        return {
+            'msg': 'post hello world!'
         }
