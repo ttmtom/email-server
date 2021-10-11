@@ -1,9 +1,9 @@
-from flask_restx import Namespace, Resource, namespace
+from flask_restx import Resource
 from app.api.server.model import Model
-from app.constants.path import SERVER_SERVICES_PATH
+from app.api.server.serverDto import ServerDto
 
 def setup_system_ns():
-    app = Namespace(SERVER_SERVICES_PATH, description='server')
+    app = ServerDto.api
     apiModel = Model(app)
 
 

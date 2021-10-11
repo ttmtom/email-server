@@ -4,13 +4,13 @@ from app.api.mail.controller import setup_mail_ns
 from app.constants.path import MAIL_SERVICES_PATH, SERVER_SERVICES_PATH
 
 
-def api_setup(flask_mail):
+def api_setup(flask, flask_mail):
     api = Api()
 
     ns_server = setup_system_ns()
     api.add_namespace(ns_server, path=SERVER_SERVICES_PATH)
 
-    ns_email = setup_mail_ns(flask_mail)
+    ns_email = setup_mail_ns(flask, flask_mail)
     api.add_namespace(ns_email, path=MAIL_SERVICES_PATH)
 
     return api

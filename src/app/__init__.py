@@ -18,7 +18,7 @@ def create_app():
     mail = Mail(app)
 
     from app.api import api_setup
-    api = api_setup(mail)
+    api = api_setup(app, mail)
     api.init_app(app)
 
     return app
