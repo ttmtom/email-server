@@ -10,7 +10,6 @@ def setup_mail_ns (flask, flask_mail):
     app = MailDto.api
     apiModel = Model(app)
     _mail = MailDto.mail
-    # request_model = flask.schema_model('mail_quest', MailDto.mail)
 
     @app.route('/send', methods=['POST'])
     class Server(Resource):
@@ -21,14 +20,7 @@ def setup_mail_ns (flask, flask_mail):
             print('post send email')
 
             data = request.json
-            print('-------------hiii')
-            print(data)
-            print(data['target'])
 
-            sendEmail(flask_mail, data['target'], data['content'])
-
-            return {
-                'success': True
-            }
+            return sendEmail(flask_mail, data['target'], data['content'])
 
     return app
